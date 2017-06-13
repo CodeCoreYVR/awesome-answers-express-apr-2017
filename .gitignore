@@ -1,0 +1,4 @@
+# Have git ignore the folder node_modules/
+# and the files .DS_Store when using git commands
+node_modules/
+.DS_Store
