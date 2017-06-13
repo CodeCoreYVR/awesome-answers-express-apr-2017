@@ -2,3 +2,9 @@
 # and the files .DS_Store when using git commands
 node_modules/
 .DS_Store
+
+# Have git ignore our compiled SCSS files
+# These are generated every time we change our
+# SCSS files while the server is running
+public/stylesheets/*.css
+public/stylesheets/*.css.map
