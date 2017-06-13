@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Awesome Answers Express</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Questions</h1>
+    <ul class="questions-list">
+      <% for (let question of questions) { %>
+        <li><%= question.title %></li>
+      <% } %>
+    </ul>
+  </body>
+</html>
