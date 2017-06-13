@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "debug": "nodemon --inspect ./bin/www"
+    "debug": "nodemon --inspect ./bin/www",
+    "db:create": "createdb aae_dev",
+    "db:drop": "dropdb aae_dev"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
@@ -14,6 +16,9 @@
     "express": "~4.14.1",
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.9.8",
+    "pg": "^6.2.4",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.1.0",
     "serve-favicon": "~2.3.2"
   },
   "devDependencies": {
