@@ -3,7 +3,11 @@
 <h1>Questions</h1>
 <ul class="questions-list">
   <% for (let question of questions) { %>
-    <li><%= question.title %></li>
+    <li>
+      <a href="/questions/<%= question.id %>">
+        <%= question.title %>
+      </a>
+    </li>
   <% } %>
 </ul>
 
