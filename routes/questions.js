@@ -18,6 +18,35 @@ router.get('/', (req, res) => {
     });
 });
 
+// questions#edit PATH: /questions/:id/edit METHOD: get
+router.get('/:id/edit', (req, res, next) => {
+  const { id } = req.params;
+
+  Question
+    .findById(id)
+    .then(question => {
+      res.render('questions/edit', { question })
+    })
+    .catch(error => {
+      next(error);
+    })
+
+});
+
+// questions#update PATH: /questions/:id METHOD: patch
+router.patch('/:id', async function (req, res, next) {
+  const { id } = req.params;
+  const { title, description } = req.body;
+
+  try {
+    const question = await Question.findById(id);
+    await question.update({ title, description });
+    res.redirect(`/questions/${question.id}`);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // questions#new PATH: /questions/new METHOD: get
 router.get('/new', (req, res) => {
   const question = Question.build();

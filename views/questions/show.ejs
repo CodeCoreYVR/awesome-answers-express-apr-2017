@@ -5,6 +5,8 @@
 <p><%= question.description %></p>
 <p><strong>Created At:</strong> <%= question.createdAt %></p>
 
+<a href="/questions/<%= question.id %>/edit">Edit</a>
+
 <h2>Answers</h2>
 
 <form action="/questions/<%= question.id %>/answers" method="post">
