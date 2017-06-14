@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<h1>New Question</h1>
+
+<form action="/questions" method="post">
+  <div>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="<%= question.title %>" />
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea
+      type="text"
+      id="description"
+      name="description"><%= question.description %></textarea>
+  </div>
+
+  <input type="submit" value="Submit" />
+
+</form>
+
+<%- include('../partials/footer') %>
