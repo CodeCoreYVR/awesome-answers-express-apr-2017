@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
+const methodOverride = require('method-override');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -21,6 +22,16 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride((req, res) => {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    const method = req.body._method;
+    delete req.body._method;
+    // whatever value we return from this callback
+    // will be used by methodOverride to replace
+    // the request's http verb
+    return method;
+  }
+}));
 app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
