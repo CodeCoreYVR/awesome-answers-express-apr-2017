@@ -5,6 +5,23 @@ const router = express.Router({mergeParams: true});
 // nesting routers
 const { Answer } = require('../models');
 
+// answers#destroy PATH: /questions/:questionId/answers/:id METHOD: delete
+router.delete('/:id', (req, res, next) => {
+  const { id, questionId } = req.params;
+
+  Answer
+    .findById(id)
+    .then(answer => {
+      return answer.destroy();
+    })
+    .then(() => {
+      res.redirect(`/questions/${questionId}`)
+    })
+    .catch(error => {
+      next(error);
+    })
+});
+
 // answers#create PATH: /questions/:questionId/answers METHOD: post
 router.post('/', async (req, res, next) => {
   const { questionId } = req.params;

@@ -19,6 +19,12 @@
     <li>
       <p><%= answer.content %></p>
       <p><strong>Last Edited:</strong> <%= answer.updatedAt %></p>
+      <form
+        action="/questions/<%= question.id %>/answers/<%= answer.id %>"
+        method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Delete"/>
+      </form>
     </li>
   <% }) %>
 </ul>
